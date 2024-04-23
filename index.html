@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Clicker</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    font-size: 36px;
+    color: #333;
+  }
+  .clicker {
+    font-size: 48px;
+    margin: 20px 0;
+    color: #007bff;
+  }
+  button {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+<audio id="audio" src="audio.wav"></audio> <!-- Audio element -->
+<div class="container">
+  <h1>Digital Clicker</h1>
+  <div class="clicker">0</div>
+  <button onclick="increment()">+1</button>
+  <button onclick="decrement()">-1</button>
+  <button onclick="reset()">Reset</button>
+</div>
+
+<script>
+  let count = 0;
+  const audio = document.getElementById('audio'); // Get audio element
+
+  function increment() {
+    count++;
+    updateDisplay();
+    playAudio();
+  }
+
+  function decrement() {
+    count--;
+    updateDisplay();
+    playAudio();
+  }
+
+  function reset() {
+    count = 0;
+    updateDisplay();
+    playAudio();
+  }
+
+  function updateDisplay() {
+    document.querySelector('.clicker').textContent = count;
+  }
+
+  function playAudio() {
+    audio.currentTime = 0; // Reset audio to start
+    audio.play();
+  }
+</script>
+</body>
+</html>
